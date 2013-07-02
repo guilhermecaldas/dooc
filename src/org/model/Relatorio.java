@@ -10,4 +10,7 @@ package org.model;
  */
 public abstract class Relatorio {
     
+    public void gerar(){
+        
+    }
 }

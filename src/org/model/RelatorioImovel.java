@@ -8,6 +8,6 @@ package org.model;
  *
  * @author guilherme
  */
-public class RelatorioImovel {
+public class RelatorioImovel extends Relatorio{
     
 }

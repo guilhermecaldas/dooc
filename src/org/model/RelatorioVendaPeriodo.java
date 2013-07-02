@@ -8,6 +8,9 @@ package org.model;
  *
  * @author guilherme
  */
-public class RelatorioVendaPeriodo {
+public class RelatorioVendaPeriodo extends Relatorio{
+    
+    
+    
     
 }
