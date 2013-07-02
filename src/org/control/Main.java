@@ -12,6 +12,6 @@ import org.model.RelatorioFactory;
  */
 public class Main {
     public static void main(String[] args) {
-        RelatorioFactory.getRelatorio(RelatorioFactory.TipoRelatorio.VENDA_CORRETOR);
+        
     }
 }
