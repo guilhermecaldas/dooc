@@ -4,8 +4,6 @@
  */
 package org.control;
 
-import org.model.RelatorioFactory;
-
 /**
  *
  * @author guilherme
