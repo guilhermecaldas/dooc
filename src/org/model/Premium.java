@@ -6,8 +6,8 @@ package org.model;
 
 /**
  *
- * @author guilherme
+ * @author tailan
  */
-public class Premium {
-    
+public class Premium extends Imovel{
+    private double preco;
 }

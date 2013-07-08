@@ -8,6 +8,6 @@ package org.model;
  *
  * @author guilherme
  */
-public class Comum {
-    
+public class Comum extends Imovel {
+    private double preco;
 }
