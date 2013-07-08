@@ -11,12 +11,15 @@ package org.model;
 public class RelatorioFactory {
   
     public static Relatorio getRelatorio(Corretor corretor) throws Exception{
-        /*a chave gerada fica:
-         * vc;idCorretor
-         * vc=venda corretor
-         * idCorretor=variavel com o id do objeto
-         */
-        return ProxyCacheRelatorio.getRelatorioChache("vc;"+corretor.getCodCorretor());
+        return ProxyCacheRelatorio.getRelatorioChache(corretor);
+    }
+    
+    public static Relatorio getRelatorio(Periodo periodo) throws Exception{
+        return ProxyCacheRelatorio.getRelatorioChache(periodo);
+    }
+    
+    public static Relatorio getRelatorio(String tipo,double valor,Periodo tempo) throws Exception{
+        return ProxyCacheRelatorio.getRelatorioChache(tipo, valor, tempo);
     }
 
 }

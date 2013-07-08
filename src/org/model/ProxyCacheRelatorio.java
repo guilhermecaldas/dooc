@@ -14,35 +14,40 @@ public class ProxyCacheRelatorio {
     
     private static HashMap<String,Relatorio> relatoriosCache=new HashMap<>();
     
-    public static Relatorio getRelatorioChache(String param) throws Exception{
-        if(relatoriosCache.containsKey(param)){
-            return relatoriosCache.get(param);
+    public static Relatorio getRelatorioChache(Corretor corretor) throws Exception{
+        if(relatoriosCache.containsKey(""+corretor.getCodCorretor())){
+            return relatoriosCache.get(corretor);
         }else{
-            
             System.out.println("Relatorio não existe em cache- criando novo");
             
-            Relatorio newRalatorio=parseParamKey(param);
-            
-            relatoriosCache.put(param,newRalatorio);
-            return newRalatorio;
+            RelatorioVendaCorretor relatorio=new RelatorioVendaCorretor(corretor);
+            relatoriosCache.put(""+corretor.getCodCorretor(),relatorio);
+            return relatorio;
         }
     }
     
-    private static Relatorio parseParamKey(String paramKey) throws Exception{
-        String[] params=paramKey.split(";");
-        if(params.length>1){
-            
-            if(params[0].equals("vc")){ //se for relatório de Vendas por Correto
-                return new RelatorioVendaCorretor(new Corretor(Integer.parseInt(params[1]),"temp",null));
-            }else if(params[0].equals("vp")){ //se for relatório de vendas por período
-                //retirar se quinzenal ou mensal
-            }else if(params[0].equals("i")){ //se for relatório de imóvel
-                //retirar o tipo, valor e tempo
-            }
-            return null;
+    public static Relatorio getRelatorioChache(Periodo periodo) throws Exception{
+        if(relatoriosCache.containsKey(""+periodo.getDate()+";"+periodo.getTipo())){
+            return relatoriosCache.get(""+periodo.getDate()+";"+periodo.getTipo());
         }else{
-            throw new Exception("Chave de parametro inválida!");
+            System.out.println("Relatorio não existe em cache- criando novo");
+            
+            RelatorioVendaPeriodo relatorio=new RelatorioVendaPeriodo(periodo);
+            relatoriosCache.put(""+periodo.getDate()+";"+periodo.getTipo(),relatorio);
+            return relatorio;
         }
-        
     }
+    
+    public static Relatorio getRelatorioChache(String tipo,double valor,Periodo tempo) throws Exception{
+        if(relatoriosCache.containsKey(""+tipo+";"+valor+";"+tempo.getDate()+";"+tempo.getTipo())){
+            return relatoriosCache.get(""+tipo+";"+valor+";"+tempo.getDate()+";"+tempo.getTipo());
+        }else{
+            System.out.println("Relatorio não existe em cache- criando novo");
+            
+            RelatorioImovel relatorio=new RelatorioImovel(tipo,valor,tempo);
+            relatoriosCache.put(""+tipo+";"+valor+";"+tempo.getDate()+";"+tempo.getTipo(),relatorio);
+            return relatorio;
+        }
+    }
+    
 }

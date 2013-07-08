@@ -23,4 +23,13 @@ public class RelatorioVendaCorretor extends Relatorio {
     public void setCorretor(Corretor corretor) {
         this.corretor = corretor;
     }
+    
+    @Override
+    public void gerar(){
+        if(getResultado()==null){
+            setResultado("Resultado venda por corretor\n");
+        }
+        
+        System.out.println(getResultado());
+    }
 }

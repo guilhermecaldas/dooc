@@ -10,7 +10,17 @@ package org.model;
  */
 public abstract class Relatorio {
     
+    private String resultado=null;
+    
     public void gerar(){
         
+    }
+    
+    public void setResultado(String resultado){
+        this.resultado=resultado;
+    }
+    
+    public String getResultado(){
+        return resultado;
     }
 }
