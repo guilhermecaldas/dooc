@@ -12,22 +12,22 @@ import java.util.Date;
  */
 public class Periodo {
     
-    private Date date;
+    private Date data;
     private int tipo;
     public static final int MENSAL=0;
     public static final int QUINZENAL=1;
 
     public Periodo(Date date, int tipo) {
-        this.date = date;
+        this.data = date;
         this.tipo = tipo;
     }
 
     public Date getDate() {
-        return date;
+        return data;
     }
 
     public void setDate(Date date) {
-        this.date = date;
+        this.data = date;
     }
 
     public int getTipo() {
